@@ -1,5 +1,6 @@
 # Meeting #3 Notes:
 *Agenda*
+
 Research Question: Is there a difference in the microbiome of Latin populations in Colombia compared to the United States as a predictor of pre-diabetes?
 Pre-diabetes "yes" status: 
 - HbA1C: 5.7 
@@ -28,7 +29,41 @@ Colombia
 
 Date: 14th Feb 2023
 
+General Notes: 
+- Remove paper 7
+- Focus on columbia and texas 
+- Look at how people have defined pre-diabetic 
+- Keep all columns when combining data sets and can filter out later 
 
+
+Project Aims for proposal:
+
+1. Data wrangling: To be done pre-proposal 
+- Comprehensive data set with those two columns reconciled 
+- Merge everything they have in common 
+- Process them separately before making the phyloseq 
+- Look into manifest + original paper to see which variable region they are looking et
+- Will not have dataset overview section
+- Call it meta data wrangling
+- Explain what we did and how we classified pre-diabetic vs not
+- Make third column to see where it came from (area)
+  - Texas diabetic
+  - Texas non-diabetic 
+  - Columbia diabetic
+  - Columbia non-diabetic 
+- Dont remove rows
+
+2. Qimme2 processing 
+- Figure whether to combine from the beginning or after the table
+  - Look at the regions where they sequences for 16S
+
+3. Basic alpha and beta diversity 
+- Comparing cohorts
+- Comparing prediabetic to non diabetic 
+
+4. Indicator taxa analysis 
+5. Core microbiome analysis 
+6. Differential abundance 
 
 
 **Meeting #2 Notes:**
