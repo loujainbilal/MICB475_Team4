@@ -16,8 +16,8 @@ Questions
 
 *Meeting Minutes*
 Texas
-- Number of prediabetics:
-- Number of non-prediabetic: 
+- Number of prediabetics:11
+- Number of non-prediabetic: 52
 
 Colombia
 - Number of prediabetics: 135
