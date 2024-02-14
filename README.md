@@ -11,9 +11,18 @@ Questions
   - How to convert from TST or Excel --> TSV (Colombia data set) for data wrangling in R studio
   - How do you use GitHub lol
   - "Diabetes" vs "glycemic control" vs "pre-diabetes"
+      - Answer: 
   - What's a good sample size for MICB 475?
 
 *Meeting Minutes*
+Texas
+- Number of prediabetics:
+- Number of non-prediabetic: 
+
+Colombia
+- Number of prediabetics: 135
+- Number of non-prediabetic: 306
+
 Date: 14th Feb 2023
 
 
