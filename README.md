@@ -7,7 +7,7 @@
 
 
 
-## Lab Notebook
+## Notebook
 
 
 ## Code
