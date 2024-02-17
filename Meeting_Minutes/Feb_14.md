@@ -1,4 +1,5 @@
-# Feb 14th Meeting #3 Notes:
+# Meeting #3 Minutes:
+Date: Feb 14th 
 ## *Agenda*
 
 Research Question: Is there a difference in the microbiome of Latin populations in Colombia compared to the United States as a predictor of pre-diabetes?
@@ -18,7 +19,7 @@ Questions
   - What's a good sample size for MICB 475?
       - Answer: 11 is small for Texas data set but we'll see where we're at after rarefaction 
 
-## *Meeting Minutes*
+## *Meeting Notes*
 Texas
 - Number of prediabetics:11
 - Number of non-prediabetic: 52
