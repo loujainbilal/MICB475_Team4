@@ -1,6 +1,6 @@
-**Meeting #2 Notes:**
-Date: 7th Feb 2023
+# **Meeting #2**
 
+## Meeting Minutes
 - Sources 6 and 7 had extensive metadata 
 - Texas and Mexico data set in Project 2 on the server 
   - New data sets would be positive control and compare to Colombia's data set and see how similar their microbiome are 
