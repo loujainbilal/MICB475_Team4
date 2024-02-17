@@ -19,10 +19,9 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
 - Path to Colombia data set: /mnt/datasets/project_2/colombia/colombia_metadata.txt
 
 ## Meeting Agenda and Minutes
-
-- [Jan 21st](https://github.com/loujainbilal/MICB475_Team4/blob/2a27ef0a062ce784733c4c35e6c5f13bc57ae9ff/Meeting_Minutes/Feb_21.md) 
 - [Feb 7th](https://github.com/loujainbilal/MICB475_Team4/blob/5738125aa837f25155416c20ab6eed6bb2347edd/Meeting_Minutes/Feb_7.md)
 - [Feb 14th](https://github.com/loujainbilal/MICB475_Team4/blob/caeff040656feac3b29e7bfd28cd4144130e6f94/Meeting_Minutes/Feb_14.md)
+- [Feb 21st](https://github.com/loujainbilal/MICB475_Team4/blob/2a27ef0a062ce784733c4c35e6c5f13bc57ae9ff/Meeting_Minutes/Feb_21.md) 
 
 
 ## Lab Notebook
