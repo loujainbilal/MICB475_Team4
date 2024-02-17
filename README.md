@@ -12,5 +12,5 @@
 
 ## Code
 - [QIIME2](https://github.com/loujainbilal/MICB475_Team4/tree/3a48cc34f9b4d08d0d790a1ecf5cb28e09baa759/QIIME2)
-- R Studio
+- [R Studio](https://github.com/loujainbilal/MICB475_Team4/tree/c2bef3bce4d6de0b681bbc162ffbdc0419a8a7ec/R_Studio)
 
