@@ -1,5 +1,5 @@
-# Meeting #3:
-Date: Feb 14th 
+# Meeting #3
+### **Date: Feb 14th **
 ## *Agenda*
 
 Research Question: Is there a difference in the microbiome of Latin populations in Colombia compared to the United States as a predictor of pre-diabetes?
