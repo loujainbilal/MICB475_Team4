@@ -1,4 +1,4 @@
-# Meeting #3 Minutes:
+# Meeting #3:
 Date: Feb 14th 
 ## *Agenda*
 
