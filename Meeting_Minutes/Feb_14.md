@@ -28,9 +28,7 @@ Colombia
 - Number of prediabetics: 135
 - Number of non-prediabetic: 306
 
-Date: 14th Feb 2023
 
-General Notes: 
 - Remove paper 7
 - Focus on columbia and texas 
 - Look at how people have defined pre-diabetic 
