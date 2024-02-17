@@ -15,7 +15,7 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
 ## Datasets
 - Path to America data set: /mnt/datasets/project_2/diabetes/mexico_metadata.tsv
   - n = 63
-  - [Link to paper](https://link.springer.com/article/10.1186/s40168-015-0072-y#MOESM1) 
+  - [Link to paper 6](https://link.springer.com/article/10.1186/s40168-015-0072-y#MOESM1) 
 - Path to Colombia data set: /mnt/datasets/project_2/colombia/colombia_metadata.txt
 
 ## Meeting Agenda and Minutes
