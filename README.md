@@ -11,6 +11,6 @@
 
 
 ## Code
-- QIIME2
+- [QIIME2](https://github.com/loujainbilal/MICB475_Team4/tree/3a48cc34f9b4d08d0d790a1ecf5cb28e09baa759/QIIME2)
 - R Studio
 
