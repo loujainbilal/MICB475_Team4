@@ -11,7 +11,7 @@
 
 
 ## **Meeting Notes**
-- Aims
+- AIMS
    - 
 - Aim 1: Data Wrangling
    -  
