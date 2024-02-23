@@ -1,7 +1,7 @@
 # **Meeting #4**
 
 ## **Agenda** 
-- Should we re-structure our aims because during our last meeting we established 6 aims which were general steps?
+- AIMS! Should we re-structure our aims because during our last meeting we established 6 aims which were general steps?
 - Should we do our entire analysis using both the datasets from the start or do the analysis with one set (ex. Colombia), generate a model and apply it to the second set (ex. Texas)?
 - New data set from Texas found no significant associations with any of their clinical measures with any particular taxa? is this an issue for our study?
 - Ask Simran to look over "Data Wrangling" section outline to confirm contents.
@@ -11,4 +11,17 @@
 
 
 ## **Meeting Notes**
-- 
+- AIMS!
+   - 
+- Aim 1: Data Wrangling
+   -  
+- Aim 2: QIIME2
+   -
+- Aim 3: Alpha and Beta Diversity
+   - What groups are we comparing?
+- Aim 4: Indicator Taxa Analysis
+   -
+- Aim 5: Core Microbiome Analysis
+   - 
+- Aim 6: Differential Abundance
+   -
