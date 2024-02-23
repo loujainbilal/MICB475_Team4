@@ -10,13 +10,14 @@
 - Colombia has manifest.txt file but Texas does not -> implications for importing step
 
 
-## **Meeting Notes**
+## **Meeting Notes** ##
+
 - AIMS
    - 
 - Aim 1: Data Wrangling
    -  
 - Aim 2: QIIME2
-   -
+   - 
 - Aim 3: Alpha and Beta Diversity
    - What groups are we comparing?
 - Aim 4: Indicator Taxa Analysis
