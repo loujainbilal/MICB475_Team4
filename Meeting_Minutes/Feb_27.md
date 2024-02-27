@@ -11,8 +11,9 @@
 -   created a merged_rooted-tree.qza
   
 -  **Next steps**
--  training the classifier for the colombia dataset (in progress)
--  training the classifier for the texas dataset
+-  training the classifier for the colombia dataset (in progress) - used the primers in the paper
+-  training the classifier for the texas dataset - planning to use the V1 to V3 primers in this paper: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8544895/ (Forward: 5'-3': AGA GTT TGA TYM TGG CTC AG Reverse: 5'-3': AGA GTT TGA TYM TGG CTC AG)
+
 -  **Question:** Should we merge the classifiers and apply it the merged_rep_seqs.qza file OR should we apply the classifiers separately to each rep_seqs.qza file and merge the two taxonomy.qza files we generate?
 -  filtering out non-bacterial DNA from our table
 
