@@ -18,6 +18,6 @@
 
 - **AIM 3 (up to 3C): Alpha and Beta Diversity Analysis Results**
 
-  - **General document:**
-  - Should we indicate if we used a detached screen to run certain jobs?
-  - 
+- **General documentation:**
+- Should we indicate if we used a detached screen to run certain jobs?
+  
