@@ -20,7 +20,7 @@
   - send Evelyn an email to reconfirm at what point we should merge --> Parvin
       - include code that uou found
      
-**-  filtering out non-bacterial DNA from our table**
+-  **filtering out non-bacterial DNA from our table**
 
 - **AIM 3 (up to 3C): Alpha and Beta Diversity Analysis Results**
   - no updates yet - not at this step 
