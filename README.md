@@ -22,7 +22,7 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
 - [Feb 7th](https://github.com/loujainbilal/MICB475_Team4/blob/5738125aa837f25155416c20ab6eed6bb2347edd/Meeting_Minutes/Feb_7.md)
 - [Feb 14th](https://github.com/loujainbilal/MICB475_Team4/blob/caeff040656feac3b29e7bfd28cd4144130e6f94/Meeting_Minutes/Feb_14.md)
 - [Feb 23rd](https://github.com/loujainbilal/MICB475_Team4/blob/4bebf68122dc4885eb8cdadc3f05544380da67e1/Meeting_Minutes/Feb_23.md)
-- [Feb 27th](https://github.com/loujainbilal/MICB475_Team4/blob/932e6c67bf3eb6cfe656d6ad15bf63e89325b038/Meeting_Minutes/Feb_27.md)
+- [Feb 27th](https://github.com/loujainbilal/MICB475_Team4/blob/5f15199f66842ede27104596d2d887f2ac3dd65d/Meeting_Minutes/Feb_27.md)
 
 
 ## Lab Notebook
