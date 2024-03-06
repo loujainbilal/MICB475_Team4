@@ -2,7 +2,7 @@
 
 ## **Meeting Minutes** 
 
-**What we worked on**
+- **What we worked on**
 - finished the QIIME 2 processing - ended up not training a classifer and instead using the full sequences from the SILVA reference database
 - alpha and beta diversity core metrics using QIIME 2
 
