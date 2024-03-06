@@ -30,4 +30,7 @@
 
 - **Action Items for Next Week**
   - Do the differential abundance first - Ayesha
-      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth 
+      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth
+    - Run core microbiome and indicator taxa analysis after
+      
+- Looking at alpha and beta diversity, there seems to be no significance when looking at yes or no diabetes populations in one region but see a significant difference when comparing regions. 
