@@ -19,18 +19,17 @@
   - n = 4 for yes texas
   - **Faiths pd**
     ![Screenshot 2024-03-05 at 12 16 35 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/216419c8-ec50-4f54-98ab-ce6a90de019c)
-![Screenshot 2024-03-05 at 12 17 46 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/b3636cca-e148-48e0-8e61-fed41ef90810)
+
   - **Evenness**
     ![Screenshot 2024-03-05 at 12 19 10 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/388562fc-db7a-4ae8-b236-28f10f9688c5)
-![Screenshot 2024-03-05 at 12 19 21 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/c96ded1f-487e-463e-9f4c-c8b8d66277e6)
+
 
 - **Notes**
   - If you plan on comparing between Colombia and Texas, the sampling depth should take all four categories into consideration
   - Sampling depth of 13890 is not great bc only retain 35% of features which is very low, but there is no other option as yes_texas sample size is very low and already at n = 4 for sampling depth of 13890
+  - ideally would have done about 20000 to account for no_texas but then we would have less than n=3 for yes_texas
+  - There are no barcodes because we merged two data sets, so rarefaction curve is grouping bases on clinical status or clinical status + data set
 
 - **Action Items for Next Week**
   - Do the differential abundance first - Ayesha
-      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth
-    - Run core microbiome and indicator taxa analysis after
-      
-- Looking at alpha and beta diversity, there seems to be no significance when looking at yes or no diabetes populations in one region but see a significant difference when comparing regions. 
+      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth 
