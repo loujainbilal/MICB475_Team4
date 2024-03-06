@@ -1,6 +1,11 @@
 # **Meeting #6**
 
 ## **Meeting Minutes** 
+
+**What we worked on**
+- finished the QIIME 2 processing - ended up not training a classifer and instead using the full sequences from the SILVA reference database
+- alpha and beta diversity core metrics using QIIME 2
+
 - **Rarefaction** What are we supposed to base the sampling depth on? Dataset or just prediabetes? 
   - **Curve** 
   ![Screenshot 2024-03-05 at 12 27 46 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/680c9709-4f2c-4f0c-ae0c-0b333425dbe1)
