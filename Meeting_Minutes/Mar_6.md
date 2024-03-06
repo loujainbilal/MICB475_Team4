@@ -2,7 +2,7 @@
 
 ## **Meeting Minutes** 
 
-- **What we worked on**
+- **What we worked on:**
 -   finished the QIIME 2 processing - ended up not training a classifer and instead using the full sequences from the SILVA reference database
 -   alpha and beta diversity core metrics using QIIME 2
 
@@ -24,3 +24,10 @@
     ![Screenshot 2024-03-05 at 12 19 10 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/388562fc-db7a-4ae8-b236-28f10f9688c5)
 ![Screenshot 2024-03-05 at 12 19 21 AM](https://github.com/loujainbilal/MICB475_Team4/assets/159094203/c96ded1f-487e-463e-9f4c-c8b8d66277e6)
 
+- **Notes**
+  - If you plan on comparing between Colombia and Texas, the sampling depth should take all four categories into consideration
+  - Sampling depth of 13890 is not great bc only retain 35% of features which is very low, but there is no other option as yes_texas sample size is very low and already at n = 4 for sampling depth of 13890
+
+- **Action Items for Next Week**
+  - Do the differential abundance first - Ayesha
+      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth 
