@@ -32,4 +32,5 @@
 
 - **Action Items for Next Week**
   - Do the differential abundance first - Ayesha
-      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth 
+      - depending on how this goes then we can see if we want to remove texas data set completely to use a higher sampling depth
+  - Core microbiome analysis - Maya 
