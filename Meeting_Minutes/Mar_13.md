@@ -7,7 +7,6 @@ _**March 13th 2023**_
 
 Texas vs. Colombia
 
-![Core Microbiome Colombia Texas]
 <img width="438" alt="Screenshot 2024-03-13 at 12 01 45 PM" src="https://github.com/loujainbilal/MICB475_Team4/assets/159101482/cc3f7ca9-be0c-45f9-8ea0-d4b3edef3b65">
 
 Prediabetic vs. Healthy
