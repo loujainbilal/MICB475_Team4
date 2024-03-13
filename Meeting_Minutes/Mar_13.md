@@ -36,8 +36,24 @@ Texas vs. Colombia
 
 
 ***Minutes***
-- Taxabar plot, issues with assigning taxonomy to the Texas dataset. Can Simran please check over Aim 2 code
-- Overview of results so far (above) 
+- Taxabar plot, issues with assigning taxonomy to the Texas dataset, only eukaryote or unclassified. Can Simran please check over Aim 2 code?
+    - yes something is wrong, we need to redo the classifier step
+    - Do Texas and Colombia data sets separately
+    - Can we merge separately classified files after they have been classified individually?
+        - idk lol need to ask Dr. Sun or look online for code
+    - Back up plan if assigning taxonomy to Texas doesn't work, just move forward with only Colombia dataset
+    - If we end up only moving forward with Colombia dataset, we can look at other definitions of diabetes ( eg. include glucose)
+      - Pick the most significant one and move forward with the downstream analysis
+      - in the paper include the alpha and beta of all three categories (HbA1C, glucose, and both) ]
+      - If none are statistically significant, use the one defined by the literature  
+      - include functional analysis 
+- 
+
+***To Do***
+- Pravin will assign taxa to two datasets SEPARATELY
+- Merge before alpha-beta analysis 
+  - Ask Dr. Sun if we can merge taxonomy files AFTER classified 
+- Aiden to start backup meta-wrangling for just Colombia dataset 
 
 
 
