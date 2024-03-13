@@ -6,6 +6,9 @@ _**March 13th 2023**_
 **Taxa Bar Plot:**
 ![image](https://github.com/loujainbilal/MICB475_Team4/assets/159331304/ad4195b4-cdf7-45ef-b2b4-ce0ea60b61fc)
 
+![image](https://github.com/loujainbilal/MICB475_Team4/assets/159331304/cc3122e8-396e-4b64-b81b-7969b2c7fc7c)
+
+
 **Core microbiome results:**
 
 Texas vs. Colombia
