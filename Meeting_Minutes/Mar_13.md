@@ -11,7 +11,7 @@ Texas vs. Colombia
 
 Prediabetic vs. Healthy
 
-![Core Microbiome Prediabetic non diabetic](https://github.com/loujainbilal/MICB475_Team4/assets/159101482/aec5a10a-db57-46e7-95db-d2fbb6a853f1)
+(https://github.com/loujainbilal/MICB475_Team4/assets/159101482/aec5a10a-db57-46e7-95db-d2fbb6a853f1)
 
 
 **Differential Abundance results:**
