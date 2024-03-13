@@ -29,6 +29,10 @@ Texas vs. Colombia
 <img width="331" alt="Screenshot 2024-03-13 at 12 10 32 PM" src="https://github.com/loujainbilal/MICB475_Team4/assets/159101482/794e51e6-0f83-44d8-a74e-5cc784390e6f">
 
 
+***Minutes***
+- Taxabar plot, issues with assigning taxonomy to the Texas dataset. Can Simran please check over Aim 2 code
+- Overview of results so far (above) 
+
 
 
 
