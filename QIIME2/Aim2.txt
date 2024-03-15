@@ -68,7 +68,7 @@ qiime demux summarize \
 mkdir texas
 cd texas
 
-# Copy colombia_demux_seqs.qzv
+# Copy texas_demux_seqs.qzv
 scp root@<IP>:/data/texas/texas_demux_seqs.qzv . 
 
 #Import texas_demux_seqs.qzv into QIIME 2 View and determine appropriate trimming parameters. 
