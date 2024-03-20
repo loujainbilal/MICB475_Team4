@@ -24,7 +24,9 @@
 **Action Items**
 - finishing our downstream analyses by next Wednesday just using the Colombia dataset
 - Starts on results sooner rather than later
-- Short presentation
+- Regenerating all of the data using just the Colombia dataset
+- Regenerate the alpha-beta graphs in R studio 
+- Short presentation for next week March 27th
     - research question 
     - results and interpretation
     - make headings of results the conclusion 
