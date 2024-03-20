@@ -26,5 +26,6 @@
 - Starts on results sooner rather than later
 - Short presentation
     - research question 
-    - results and interpretation 
+    - results and interpretation
+    - make headings of results the conclusion 
 
