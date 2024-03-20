@@ -1,11 +1,11 @@
 **March 13th 2023**
 
 **Agenda**
-- We tried training a classifier and then applied it to the merged rep seqs, but it did not work. 
+- Parvin tried training a classifier and then applied it to the merged rep seqs, but it did not work. 
 
 ![image (1)](https://github.com/loujainbilal/MICB475_Team4/assets/159331304/a3e384ec-0d52-4e0c-9c1f-85389b3f72ac)
 
-- When I ran the code for merging the two taxonomy files, I got this error below. 
+- When Parvin ran the code for merging the two taxonomy files, I got this error below. 
 
 ![image](https://github.com/loujainbilal/MICB475_Team4/assets/159331304/00a1b67b-a552-4cea-afd9-40ae9618dfe3)
 
@@ -22,10 +22,10 @@
 - discussion would be interesting for pre-diabetes as the microbiome can affect health way before diabetes is developed
   
 **Action Items**
-- finishing our downstream analyses by next Wednesday just using the Colombia dataset
+- Finishing our downstream analyses by next Wednesday just using the Colombia dataset
 - Starts on results sooner rather than later
-- Regenerating all of the data using just the Colombia dataset
-- Regenerate the alpha-beta graphs in R studio 
+- Regenerating all of the data using just the Colombia dataset for next meeting
+- Regenerate the alpha-beta graphs in R studio after consulting with other downstream analysis 
 - Short presentation for next week March 27th
     - research question 
     - results and interpretation
