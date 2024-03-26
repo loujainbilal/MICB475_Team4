@@ -1,0 +1,121 @@
+###Load packages and files
+#install the tidyverse
+install.packages("tidyverse")
+
+#install the ape package
+install.packages("ape")
+
+#install the phyloseq package 
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("phyloseq")
+
+#Ensure library is loaded 
+library(tidyverse)
+library(ape)
+library(phyloseq)
+library(vegan)
+library(ggplot2)
+library(microbiome)
+library(ggVennDiagram)
+
+#install merged metadata 
+metaFP <- "prediabetes_wrangled_metadata.tsv"
+meta <- read_delim(file=metaFP, delim = "\t")
+
+#install merged OTU table
+otuFP <- "feature-table.txt"
+otu <- read_delim(file=otuFP, delim = "\t", skip=1)
+
+#install merged taxonomy file 
+taxFP <-"taxonomy.tsv"
+tax <- read_delim(file=taxFP, delim = "\t")
+
+#install merged phylogenetic tree file 
+treeFP <-"tree.nwk"
+tree <- read.tree(file=treeFP)
+
+###Adjust file format to be read by the phyloseq object
+##format OTU table 
+otu_mat <- as.matrix(otu[,-1])
+rownames(otu_mat) <- otu$'#OTU ID'
+
+#convert otu table to phyloseq readable object 
+OTU <- otu_table(otu_mat, taxa_are_rows = TRUE)
+
+##format metadata
+samp_df <- as.data.frame(meta[,-1])
+rownames(samp_df) <- meta$`sample-id`
+
+#convert metadata to phyloseq readable object 
+SAMP <- sample_data(samp_df)
+
+##format taxonomy 
+tax_mat <- tax %>% select(-Confidence)%>% 
+  separate(col=Taxon, sep="; "
+           , into = c("Domain","Phylum","Class","Order","Family","Genus","Species")) %>%
+  as.matrix() 
+#save and make sample ids the rows
+tax_mat <- tax_mat[,-1]
+rownames(tax_mat) <- tax$`Feature ID`
+
+#make taxa table 
+TAX <- tax_table(tax_mat)
+
+#Create the phyloseq object 
+team4 <- phyloseq(OTU, SAMP, TAX, tree)
+
+# Convert to relative abundance
+team4_RA <- transform_sample_counts(team4, fun=function(x) x/sum(x))
+
+# Subset dataset into prediabetic and healthy groups for HbA1c
+prediabetic_HbA1c <- subset_samples(team4_RA, `hba1c_prediabetic`=="Yes")
+healthy_HbA1c <- subset_samples(team4_RA, `hba1c_prediabetic`=="No")
+
+# Set a prevalence threshold and abundance threshold
+healthy_ASVs <- core_members(healthy_HbA1c, detection=0, prevalence = 0.3)
+prediabetic_ASVs <- core_members(prediabetic_HbA1c, detection=0, prevalence = 0.3)
+
+#Make a list of the conditions we are interested in (Healthy and Prediabetic)
+status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
+
+# Make a Venn-diagram
+venn_status <- ggVennDiagram(x = status_list_full)
+View(venn_status)
+# Saves the Venn diagram as a png 
+ggsave("venn_status_hba1c.png", venn_status)
+
+# Subset dataset into prediabetic and healthy groups for fasting glucose
+prediabetic_glucose <- subset_samples(team4_RA, `fast_glucose_prediabetic`=="Yes")
+healthy_glucose <- subset_samples(team4_RA, `fast_glucose_prediabetic`=="No")
+
+# Set a prevalence threshold and abundance threshold
+healthy_ASVs <- core_members(healthy_glucose, detection=0, prevalence = 0.3)
+prediabetic_ASVs <- core_members(prediabetic_glucose, detection=0, prevalence = 0.3)
+
+#Make a list of the conditions we are interested in (Healthy and Prediabetic)
+status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
+
+# Make a Venn-diagram
+venn_status <- ggVennDiagram(x = status_list_full)
+View(venn_status)
+# Saves the Venn diagram as a png 
+ggsave("venn_status_glucose.png", venn_status)
+
+# Subset dataset into prediabetic and healthy groups for both 
+prediabetic_both <- subset_samples(team4_RA, `hba1c_glucose_prediabetic`=="Yes")
+healthy_both <- subset_samples(team4_RA, `hba1c_glucose_prediabetic`=="No")
+
+# Set a prevalence threshold and abundance threshold
+healthy_ASVs <- core_members(healthy_both, detection=0, prevalence = 0.3)
+prediabetic_ASVs <- core_members(prediabetic_both, detection=0, prevalence = 0.3)
+
+#Make a list of the conditions we are interested in (Healthy and Prediabetic)
+status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
+
+# Make a Venn-diagram
+venn_status <- ggVennDiagram(x = status_list_full)
+View(venn_status)
+# Saves the Venn diagram as a png 
+ggsave("venn_status_both.png", venn_status)
