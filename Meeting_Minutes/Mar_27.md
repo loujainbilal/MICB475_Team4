@@ -21,13 +21,13 @@ _**March 27th**_
 - Do we see this taxa in a cohort that has prediabetes
 
 FIGURES 
-Figure 1- Two alphas (Shannon and Faith's PD), two betas (bray and one of the unifracs) (two panels, one for alpha, one for beta)
-Figure 2- Core microbiome (without the "both" category)
-Figure 3- Volcano plots  
-Table 1 (indicator taxa)
+- Figure 1- Two alphas (Shannon and Faith's PD), two betas (bray and one of the unifracs) (two panels, one for alpha, one for beta)
+- Figure 2- Core microbiome (without the "both" category)
+- Figure 3- Volcano plots  
+- Table 1 (indicator taxa)
   - one table for hba1c and one for fasting glucose 
-Table 2 (taxanomic model)
+- Table 2 (taxanomic model)
   - ones that are similar between figures 1-3
-Figure 4 (potential) Model Validation: relative abundance plots
+- Figure 4 (potential) Model Validation: relative abundance plots
   - with the Texas dataset 
-Figure 5 PICRUST
+- Figure 5 PICRUST
