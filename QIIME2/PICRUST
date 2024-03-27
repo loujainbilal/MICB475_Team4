@@ -1,0 +1,154 @@
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# qiime feature-table filter-features /
+Usage: qiime feature-table filter-features [OPTIONS]
+
+  Filter features from table based on frequency and/or metadata. Any samples
+  with a frequency of zero after feature filtering will also be removed. See
+  the filtering tutorial on https://docs.qiime2.org for additional details.
+
+Inputs:
+  --i-table ARTIFACT FeatureTable[Frequency]
+                       The feature table from which features should be
+                       filtered.                                    [required]
+Parameters:
+  --p-min-frequency INTEGER
+                       The minimum total frequency that a feature must have
+                       to be retained.                            [default: 0]
+  --p-max-frequency INTEGER
+                       The maximum total frequency that a feature can have to
+                       be retained. If no value is provided this will default
+                       to infinity (i.e., no maximum frequency filter will be
+                       applied).                                    [optional]
+  --p-min-samples INTEGER
+                       The minimum number of samples that a feature must be
+                       observed in to be retained.                [default: 0]
+  --p-max-samples INTEGER
+                       The maximum number of samples that a feature can be
+                       observed in to be retained. If no value is provided
+                       this will default to infinity (i.e., no maximum sample
+                       filter will be applied).                     [optional]
+  --m-metadata-file METADATA...
+    (multiple          Feature metadata used with `where` parameter when
+     arguments will    selecting features to retain, or with `exclude-ids`
+     be merged)        when selecting features to discard.          [optional]
+  --p-where TEXT       SQLite WHERE clause specifying feature metadata
+                       criteria that must be met to be included in the
+                       filtered feature table. If not provided, all features
+                       in `metadata` that are also in the feature table will
+                       be retained.                                 [optional]
+  --p-exclude-ids / --p-no-exclude-ids
+                       If true, the features selected by `metadata` or
+                       `where` parameters will be excluded from the filtered
+                       table instead of being retained.       [default: False]
+  --p-filter-empty-samples / --p-no-filter-empty-samples
+                       If true, drop any samples where none of the retained
+                       features are present.                   [default: True]
+Outputs:
+  --o-filtered-table ARTIFACT FeatureTable[Frequency]
+                       The resulting feature table filtered by feature.
+                                                                    [required]
+Miscellaneous:
+  --output-dir PATH    Output unspecified results to a directory
+  --verbose / --quiet  Display verbose output to stdout and/or stderr during
+                       execution of this action. Or silence output if
+                       execution is successful (silence is golden).
+  --example-data PATH  Write example data and exit.
+  --citations          Show citations and exit.
+  --help               Show this message and exit.
+
+Examples:
+  # ### example: filter features min samples
+  qiime feature-table filter-features \
+    --i-table feature-table.qza \
+    --p-min-samples 2 \
+    --o-filtered-table filtered-table.qza
+  
+
+                  There were some problems with the command:                  
+ (1/3) Missing option '--i-table'.
+ (2/3) Missing option '--o-filtered-table'. ("--output-dir" may also be used)
+ (3/3) Got unexpected extra argument (/)
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# qiime feature-table filter-features \
+  --i-table colombia_table-no-mitochondria-no-chloroplast.qza \
+  --p-min-frequency 5 \
+  --o-filtered-table colombia-feature-frequency-filtered-table.qza
+Saved FeatureTable[Frequency] to: colombia-feature-frequency-filtered-table.qza
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# ls
+colombia-feature-frequency-filtered-table.qza
+colombia_aligned-rep-seqs.qza
+colombia_alpha-rarefaction.qzv
+colombia_classifier.qza
+colombia_demux_seqs.qza
+colombia_demux_seqs.qzv
+colombia_masked-aligned-rep-seqs.qza
+colombia_ref-seqs-trimmed.qza
+colombia_rep-seqs.qza
+colombia_rep-seqs.qzv
+colombia_rooted-tree.qza
+colombia_stats.qza
+colombia_table-no-mitochondria-no-chloroplast.qza
+colombia_table-no-mitochondria-no-chloroplast.qzv
+colombia_table.qza
+colombia_table.qzv
+colombia_table2.0.qzv
+colombia_taxa-bar-plots.qzv
+colombia_taxa-bar-plots2.0.qzv
+colombia_taxonomy.qza
+colombia_taxonomy.qzv
+colombia_unrooted-tree.qza
+core-metrics-results
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# qiime picrust2 full-pipeline \
+  --i-table colombia-feature-frequency-filtered-table.qza \
+  --i-seq colombia_rep-seqs.qza \
+  --output-dir q2-picrust2_output \
+  --p-placement-tool sepp \
+  --p-hsp-method pic \
+  --p-max-nsti 2 \
+  --verbose
+Warning - 114 input sequences aligned poorly to reference sequences (--min_align option specified a minimum proportion of 0.8 aligning to reference sequences). These input sequences will not be placed and will be excluded from downstream steps.
+
+This is the set of poorly aligned input sequences to be excluded: 6a4b6f6c83b5b263e555fff191feff8d, ac8fa75dfe07c0310d676d622d633e55, 9a485af5477fa603a44384adde621770, 0818ad581cdc4d4e4a17b3c002de6429, 8d45f82c832a945725ced21473bbeb25, 85c9d7a65e4a2c2c6c8501601bc721f1, 15d2323eea0c98325e8227fc36087a11, bbe762d31b1510fd6f0bcddebb31f278, b005da6441d027daba15b92f1e4355c2, 9cbe7b1a6b0ce5920370697037d6fe15, 317ab8d4339e8c915fa4cb893a89f730, d34cb4c8b36a017b745fa9793ea40442, 8bb0d5bc763718d1e6f07aa9258627ee, 7591dcb8cea5ff049286334bb93e40b5, dd2855b0bf430d0ba7474f219f1c43c3, 2d2ad086b1025360779dd66ea023c946, 1497cb956fb7893e6d857d6422a9a39f, 23c79f1e82333ad483bebb59fba34071, 4c8e9c21f92c6912a12f764e3d517481, 4b1823afe4844c7ed96aa4e9baf6f956, 39a845a40b8efa3ff19b01d68a78eddd, cd8eeffd989b34fb01edbafdb569963e, 3c5b3a73c6f4802de7c06aefd871abf8, 3c7e1cf1194fd3a13c0959132c792552, 0864c03a920688509b82d7741c63aaa0, 0c72c8839a8e5f9e26f27d815d40a685, b1486df8cbcc57e5396f95eee09b8c9d, c3e6a39eccd6c2d18d2764b1c053a80e, 5197d642386fee631074332cefff1e0c, bc0eb1e744f56bcc683eb72222beada5, 05780f0207910b9ca9856f31d80943e4, c5f1d4053c0fc5e65e117cc5f993adcc, 2ffaecaecec28da0863afe51614e5671, bb0cae70dcb85f830008ae1e61dfef22, f14ff012c9218c1d84d98c21b33ba018, 23422b6fa007bb9527538525a082f204, 8921171ce94dad239e5d0e7baa2ed6dd, 65550e66d3efabf8c23c1e5c01e6c782, 1cfbf2b21acb416b8c0d66a939b22c36, 2b704937e9e43ea099aaf683af28e1de, a519b95bb21891d45f0d0a3774032064, 3e20bef41bd1bbc50da32551d9c52caa, f43e62a92a7cff2cbc1b18c58db8a0cc, 3c1b68d8f3a252d1e236f558b9534118, dea0d0e87476347f0ba8a32d82adf2ab, 578286e00e4ea99616cb2e1c1d7e8d96, 7522875b5be9e98cddbb12bdfc7b5e31, 55ba99d077f637854764ea535a1e08e4, 923eaeaba990b29c122e83846d9915db, 6f28fe7d73e018824f851c69a5125729, 8d7aa5e36655970c940cea7196b8ed88, d30622825e0662d3291c72483ee5d797, b3745a19b46c229b87ac0a4185a1610a, 681ddf33ecc11106588acb0425c8a824, 738b9876697009c4c81d71555e0f50c3, efcc5e6bf7b11a882f706c606a9af84e, cde57cffdcdac2d0bf4c5730b1ed638f, eb59ef52e2b461c3840085a3b92b74a9, d2c0e27fa49b6253c0068065ce9b5f11, 4025dde263baeeb7173b8020fdb932bc, 2fd0531cb84b2dea11118cdd4705a0f9, 58052379f8b24472741b3f12addfec71, 7dfebe95b6109282aeafaabaf22c7a4c, ed2a570812f1a139f40c2f40dfa92431, 1530c04edda9b117b99f3989cb9df1b9, ae5897c6510405bec36d43401e8587da, 0bbe5300d5bb20198e512fe455bad896, 174b1f454a25471566dabc2f5ef76075, 440eeb450477a44e89105bc2fcf2250c, bee07ce207644580cd9f6f9d5b9f3ae9, 2fefc82198c371cc391a9cc4a312e14e, fd3d8e86481b8236ec610e5c709e617e, 2214860ed4c267a982242e42628897f3, 42d021b7c7729530272257d9a99ff3e8, a02917ad764ecb934ff1093a550d157b, 4b37551ab165bde900df01d85b3cf4c6, 79da2c26e98cee07030197be7aec3ce9, 78e54a66eb7423a82905aae75966430f, c4eaed28becc04662099dfd893ae3442, 5a240fed60e77fc8ccbeb05783a0f9f8, 326cae0d0a75ff91ce8334fe2265ee7c, 2de4d30e7a2a1c820ade01a439f60955, f3222999a71303d392857cb199144d1e, 9f4506b3dcf493ae5454289db3718414, 8688a91d4f607b5a3f8cb766e189cf0f, 11fb91de41f4d426fdcd308d8a7e9e1a, c81117073f043a568b51ab6c9c2da7b3, 5aed7532318428b82951cb07be6b16e5, 06b6d09ceee5228e4dc50c370612f961, 9d954aad2c96f700d98a4c394154926b, 6be0eaa1fec83632ab3b4b34636b3610, 5316204f29eba54b432722c661354324, ed077ae92734f7c17d22cefa34b77052, 63cab922538878971227fda3af6763fc, 9583cd86e03bc59eaa868d7c90dbbbe5, 14ccb52e9c7745eac9556a47edfbad2b, fa88d46394f127986f7a2ab218003df5, 6498d97d1031aeb6fa8163b5e1426408, 18a95b85eb1b287b5ec91c40155fd41e, d57c5483e783073b4a600f984e16b886, 681feb8556ea6a4805c8f43801c87640, fbfe0a814b9c1c04d4b88e3509788567, 977c850d4c644630b6bbbe15de90f8fa, d64893770ab57bcc6b917e332f23e9b4, a3854a09d525c85249dd4ea1d1e8dc06, 036ad8cece6cb405385a3bb23ab44c7d, 5d5c525cd2ae6c614ed49059b21e561c, 2001895a3566669e1baed34c7d3677db, 05a50081d0295d6557455284a5fea7ea, a42436d7afbad87a9a5e70a5d6e8e48b, 940f83c5e2fc9616b967bca11518d765, 5dc4fd81e7407e738dad9d1b606cb630, 731064d809fc4d7ebbb2013baef35a62, 873eb8abbb518b419ba6be87d2bdd680
+
+
+
+
+
+26 of 11237 ASVs were above the max NSTI cut-off of 2.0 and were removed from the downstream analyses.
+
+26 of 11237 ASVs were above the max NSTI cut-off of 2.0 and were removed from the downstream analyses.
+
+
+Saved FeatureTable[Frequency] to: q2-picrust2_output/ko_metagenome.qza
+Saved FeatureTable[Frequency] to: q2-picrust2_output/ec_metagenome.qza
+Saved FeatureTable[Frequency] to: q2-picrust2_output/pathway_abundance.qza
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# ls -F
+colombia-feature-frequency-filtered-table.qza  colombia_table-no-mitochondria-no-chloroplast.qza
+colombia_aligned-rep-seqs.qza		       colombia_table-no-mitochondria-no-chloroplast.qzv
+colombia_alpha-rarefaction.qzv		       colombia_table.qza
+colombia_classifier.qza			       colombia_table.qzv
+colombia_demux_seqs.qza			       colombia_table2.0.qzv
+colombia_demux_seqs.qzv			       colombia_taxa-bar-plots.qzv
+colombia_masked-aligned-rep-seqs.qza	       colombia_taxa-bar-plots2.0.qzv
+colombia_ref-seqs-trimmed.qza		       colombia_taxonomy.qza
+colombia_rep-seqs.qza			       colombia_taxonomy.qzv
+colombia_rep-seqs.qzv			       colombia_unrooted-tree.qza
+colombia_rooted-tree.qza		       core-metrics-results/
+colombia_stats.qza			       q2-picrust2_output/
+(qiime2-2023.7) root@c9c770334885:~/data/colombia# cd q2-picrust2_output
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output# ls
+ec_metagenome.qza  ko_metagenome.qza  pathway_abundance.qza
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output# qiime tools export \
+  --input-path pathway_abundance.qza \
+  --output-path pathabun_exported
+Exported pathway_abundance.qza as BIOMV210DirFmt to directory pathabun_exported
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output# ls
+ec_metagenome.qza  ko_metagenome.qza  pathabun_exported  pathway_abundance.qza
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output# cd pathabun_exported
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output/pathabun_exported# ls
+feature-table.biom
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output/pathabun_exported# biom convert \
+   -i feature-table.biom \
+   -o pathway_abundance.tsv \
+   --to-tsv
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output/pathabun_exported# ls
+feature-table.biom  pathway_abundance.tsv
+(qiime2-2023.7) root@c9c770334885:~/data/colombia/q2-picrust2_output/pathabun_exported# sc
