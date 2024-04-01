@@ -1,0 +1,43 @@
+#Upload new metadata file to the server called prediabetes_wrangled_metadata_REDO.tsv
+
+#Redo Alpha-Beta Analysis for HBA1C condition
+(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny /data/colombia/colombia_rooted-tree.qza \
+  --i-table /data/colombia/colombia_table-no-mitochondria-no-chloroplast.qza \
+  --p-sampling-depth 26493 \
+  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --output-dir core-metrics-results-REDO
+Saved FeatureTable[Frequency] to: core-metrics-results-REDO/rarefied_table.qza
+Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/faith_pd_vector.qza
+Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/observed_features_vector.qza
+Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/shannon_vector.qza
+Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/evenness_vector.qza
+Saved DistanceMatrix to: core-metrics-results-REDO/unweighted_unifrac_distance_matrix.qza
+Saved DistanceMatrix to: core-metrics-results-REDO/weighted_unifrac_distance_matrix.qza
+Saved DistanceMatrix to: core-metrics-results-REDO/jaccard_distance_matrix.qza
+Saved DistanceMatrix to: core-metrics-results-REDO/bray_curtis_distance_matrix.qza
+Saved PCoAResults to: core-metrics-results-REDO/unweighted_unifrac_pcoa_results.qza
+Saved PCoAResults to: core-metrics-results-REDO/weighted_unifrac_pcoa_results.qza
+Saved PCoAResults to: core-metrics-results-REDO/jaccard_pcoa_results.qza
+Saved PCoAResults to: core-metrics-results-REDO/bray_curtis_pcoa_results.qza
+Saved Visualization to: core-metrics-results-REDO/unweighted_unifrac_emperor.qzv
+Saved Visualization to: core-metrics-results-REDO/weighted_unifrac_emperor.qzv
+Saved Visualization to: core-metrics-results-REDO/jaccard_emperor.qzv
+Saved Visualization to: core-metrics-results-REDO/bray_curtis_emperor.qzv
+(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results-REDO/faith_pd_vector.qza \
+  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --o-visualization core-metrics-results-REDO/faith-pd-group-significance-REDO.qzv
+Saved Visualization to: core-metrics-results-REDO/faith-pd-group-significance-REDO.qzv
+(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results-REDO/evenness_vector.qza \
+  --m-metadata-file  prediabetes_wrangled_metadata_REDO.tsv \
+  --o-visualization core-metrics-results-REDO/evenness-group-significance-REDO.qzv
+Saved Visualization to: core-metrics-results-REDO/evenness-group-significance-REDO.qzv
+(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results-REDO/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --m-metadata-column hba1c_prediabetic \
+  --o-visualization core-metrics-results-REDO/unweighted-unifrac-prediabetic-significance-REDO.qzv \
+  --p-pairwise
+Saved Visualization to: core-metrics-results-REDO/unweighted-unifrac-prediabetic-significance-REDO.qzv
