@@ -1,0 +1,33 @@
+#Prune and make tables for ASVs (hba1c)
+hba1c_taxtable <- tax_table(prune_taxa(prediabetic_ASVs,team4))
+hba1c_prediabetic_tax_table <- as.data.frame(hba1c_taxtable)
+
+hba1c_h_taxtable <- tax_table(prune_taxa(healthy_ASVs,team4))
+hba1c_healthy_tax_table <- as.data.frame(hba1c_h_taxtable)
+
+#Filter and make table to analyze ASVs unique to prediabetic for hba1c
+unique_ASVs_hba1c <- setdiff(rownames(hba1c_prediabetic_tax_table), rownames(hba1c_healthy_tax_table))
+hba1c_ASVs_pd <- as.data.frame(unique_ASVs_hba1c)
+
+#Filter and make table to analyze ASVs unique to healthy for hba1c
+unique_ASVs_hba1c_healthy <- setdiff(rownames(hba1c_healthy_tax_table), rownames(hba1c_prediabetic_tax_table))
+hba1c_ASVs_healthy <- as.data.frame(unique_ASVs_hba1c_healthy)
+
+
+
+
+
+#Prune and make tables for ASVs (fasting plasma glucose)
+fpg_taxtable <- tax_table(prune_taxa(prediabetic_ASVs,team4))
+fpg_prediabetic_tax_table <- as.data.frame(fpg_taxtable)
+
+fpg_h_taxtable <- tax_table(prune_taxa(healthy_ASVs,team4))
+fpg_healthy_tax_table <- as.data.frame(fpg_h_taxtable)
+
+#Filter and make table to analyze ASVs unique to prediabetic for fpg
+unique_ASVs_fpg <- setdiff(rownames(fpg_prediabetic_tax_table), rownames(fpg_healthy_tax_table))
+fpg_ASVs_pd <- as.data.frame(unique_ASVs_fpg)
+
+#Filter and make table to analyze ASVs unique to healthy for fpg
+unique_ASVs_fpg_healthy <- setdiff(rownames(fpg_healthy_tax_table), rownames(fpg_prediabetic_tax_table))
+fpg_ASVs_healthy <- as.data.frame(unique_ASVs_fpg_healthy)
