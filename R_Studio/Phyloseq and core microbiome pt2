@@ -82,6 +82,7 @@ status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
 
 # Make a Venn-diagram
 venn_status <- ggVennDiagram(x = status_list_full)
+venn_status_colour <- venn_status + scale_fill_gradient(low = "purple", high = "blue")
 View(venn_status)
 # Saves the Venn diagram as a png 
 ggsave("venn_status_hba1c.png", venn_status)
