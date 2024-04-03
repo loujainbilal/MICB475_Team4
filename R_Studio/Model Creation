@@ -1,0 +1,151 @@
+#Ensure library is loaded 
+library(tidyverse)
+library(ape)
+library(phyloseq)
+library(vegan)
+library(ggplot2)
+library(microbiome)
+library(ggVennDiagram)
+
+#install merged metadata 
+metaFP <- "prediabetes_wrangled_metadata_REDO.tsv"
+meta <- read_delim(file=metaFP, delim = "\t")
+
+#install merged OTU table
+otuFP <- "texas_feature-table.txt"
+otu <- read_delim(file=otuFP, delim = "\t", skip=1)
+
+#install merged taxonomy file 
+taxFP <-"texas_taxonomy.tsv"
+tax <- read_delim(file=taxFP, delim = "\t")
+
+##format taxonomy 
+tax_mat <- tax %>% select(-Confidence)%>% 
+  separate(col=Taxon, sep="; "
+           , into = c("Domain","Phylum","Class","Order","Family","Genus","Species")) %>%
+  as.matrix() 
+#save and make sample ids the rows
+tax_mat <- tax_mat[,-1]
+rownames(tax_mat) <- tax$`Feature ID`
+
+#make taxa table 
+TAX <- tax_table(tax_mat)
+
+texas_tax_df <- as.data.frame(tax_mat)
+
+
+
+###SPECIES ATTEMPT ONE###
+
+
+
+# Initialize an empty list to store feature IDs
+feature_ids <- c()
+
+# Loop through each row in the "Family" column of texas_tax_df
+for (row_name in rownames(texas_tax_df)) {
+  # Get the family value for the current row
+  family_value <- texas_tax_df[row_name, "Family"]
+  
+  # Check if the family value is not NA and if it is "f_Erysipelotrichaceae"
+  if (!is.na(family_value) && family_value == "f__Erysipelotrichaceae") {
+    # If true, add the feature ID (row name) to the list
+    feature_ids <- c(feature_ids, row_name)
+  }
+}
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+filtered_df <- otu[otu$'#OTU ID' %in% feature_ids, ]
+
+# Find columns with only zeros
+zero_columns <- sapply(filtered_df, function(x) all(x == 0))
+
+# Remove columns with only zeros
+filtered_df <- filtered_df[, !zero_columns, drop = FALSE]
+
+column_titles <- colnames(filtered_df)[-1]
+
+#Export texas metadata
+meta_texasFP <- "texas_prediabetes_wrangled_metadata.tsv"
+meta_texas <- read_delim(file=meta_texasFP, delim="\t")
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+meta_texas <- meta_texas[meta_texas$Sample_ID %in% column_titles, ]
+
+
+
+###SPECIES ATTEMPT TWO###
+
+
+
+# Initialize an empty list to store feature IDs
+feature_ids_2 <- c()
+
+# Loop through each row in the "Family" column of texas_tax_df
+for (row_name in rownames(texas_tax_df)) {
+  # Get the family value for the current row
+  species_value <- texas_tax_df[row_name, "Species"]
+  
+  # Check if the family value is not NA and if it is "s__Cloacibacillus_porcorum"
+  if (!is.na(species_value) && species_value == "s__Cloacibacillus_porcorum") {
+    # If true, add the feature ID (row name) to the list
+    feature_ids_2 <- c(feature_ids_2, row_name)
+  }
+}
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+filtered_df_2 <- otu[otu$'#OTU ID' %in% feature_ids_2, ]
+
+# Find columns with only zeros
+zero_columns <- sapply(filtered_df_2, function(x) all(x == 0))
+
+# Remove columns with only zeros
+filtered_df_2 <- filtered_df_2[, !zero_columns, drop = FALSE]
+
+column_titles_2 <- colnames(filtered_df_2)[-1]
+
+#Export texas metadata
+meta_texasFP <- "texas_prediabetes_wrangled_metadata.tsv"
+meta_texas <- read_delim(file=meta_texasFP, delim="\t")
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+meta_texas_2 <- meta_texas[meta_texas$Sample_ID %in% column_titles_2, ]
+
+
+
+###SPECIES ATTEMPT THREE###
+
+
+
+# Initialize an empty list to store feature IDs
+feature_ids_3 <- c()
+
+# Loop through each row in the "Family" column of texas_tax_df
+for (row_name in rownames(texas_tax_df)) {
+  # Get the family value for the current row
+  species_value <- texas_tax_df[row_name, "Species"]
+  
+  # Check if the family value is not NA and if it is "s__Gabonibacter_massiliensis"
+  if (!is.na(species_value) && species_value == "s__Gabonibacter_massiliensis") {
+    # If true, add the feature ID (row name) to the list
+    feature_ids_3 <- c(feature_ids_3, row_name)
+  }
+}
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+filtered_df_3 <- otu[otu$'#OTU ID' %in% feature_ids_3, ]
+
+# Find columns with only zeros
+zero_columns <- sapply(filtered_df_3, function(x) all(x == 0))
+
+# Remove columns with only zeros
+filtered_df_3 <- filtered_df_3[, !zero_columns, drop = FALSE]
+
+column_titles_3 <- colnames(filtered_df_3)[-1]
+
+#Export texas metadata
+meta_texasFP <- "texas_prediabetes_wrangled_metadata.tsv"
+meta_texas <- read_delim(file=meta_texasFP, delim="\t")
+
+# Filter the data frame to include only rows with desired values in 'desired_column'
+meta_texas_3 <- meta_texas[meta_texas$Sample_ID %in% column_titles_3, ]
