@@ -2,9 +2,7 @@
 #install the tidyverse
 install.packages("tidyverse")
 
-#install the ape package
 install.packages("ape")
-
 #install the phyloseq package 
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -15,13 +13,12 @@ BiocManager::install("phyloseq")
 library(tidyverse)
 library(ape)
 library(phyloseq)
-library(ggplot2)
 library(microbiome)
 library(ggVennDiagram)
 
 #install merged metadata 
-metaFP <- "prediabetes_wrangled_metadata.tsv"
-meta <- read_delim(file=metaFP, delim = "\t")
+metaFP_2 <- "prediabetes_wrangled_metadata_REDO.tsv"
+meta_2 <- read_delim(file=metaFP_2, delim = "\t")
 
 #install merged OTU table
 otuFP <- "feature-table.txt"
@@ -44,8 +41,8 @@ rownames(otu_mat) <- otu$'#OTU ID'
 OTU <- otu_table(otu_mat, taxa_are_rows = TRUE)
 
 ##format metadata
-samp_df <- as.data.frame(meta[,-1])
-rownames(samp_df) <- meta$`sample-id`
+samp_df <- as.data.frame(meta_2[,-1])
+rownames(samp_df) <- meta_2$`sample-id`
 
 #convert metadata to phyloseq readable object 
 SAMP <- sample_data(samp_df)
@@ -68,6 +65,7 @@ team4 <- phyloseq(OTU, SAMP, TAX, tree)
 # Convert to relative abundance
 team4_RA <- transform_sample_counts(team4, fun=function(x) x/sum(x))
 
+
 # Subset dataset into prediabetic and healthy groups for HbA1c
 prediabetic_HbA1c <- subset_samples(team4_RA, `hba1c_prediabetic`=="Yes")
 healthy_HbA1c <- subset_samples(team4_RA, `hba1c_prediabetic`=="No")
@@ -76,15 +74,42 @@ healthy_HbA1c <- subset_samples(team4_RA, `hba1c_prediabetic`=="No")
 healthy_ASVs <- core_members(healthy_HbA1c, detection=0, prevalence = 0.3)
 prediabetic_ASVs <- core_members(prediabetic_HbA1c, detection=0, prevalence = 0.3)
 
+
 #Make a list of the conditions we are interested in (Healthy and Prediabetic)
-status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
+status_list_full <- list(H = healthy_ASVs, PD = prediabetic_ASVs)
+
 
 # Make a Venn-diagram
 venn_status <- ggVennDiagram(x = status_list_full)
-venn_status_colour <- venn_status + scale_fill_gradient(low = "purple", high = "blue")
 View(venn_status)
 # Saves the Venn diagram as a png 
 ggsave("venn_status_hba1c.png", venn_status)
+
+install.packages("RColorBrewer")
+library(RColorBrewer)
+colors_blue <- brewer.pal(9, "Blues")
+
+# View the generated color palette
+print(colors_blue)
+venn_status_colour <- venn_status + scale_fill_gradient(low = "#C6DBEF", high = "#08519C")
+
+ggsave("venn_status_hba1c_final.png", venn_status_colour)
+
+#Prune and make tables for ASVs
+hba1c_taxtable <- tax_table(prune_taxa(prediabetic_ASVs,team4))
+hba1c_prediabetic_tax_table <- as.data.frame(hba1c_taxtable)
+
+hba1c_h_taxtable <- tax_table(prune_taxa(healthy_ASVs,team4))
+hba1c_healthy_tax_table <- as.data.frame(hba1c_h_taxtable)
+
+#Filter and make table to analyze ASVs unique to prediabetic for hba1c
+unique_ASVs_hba1c <- setdiff(rownames(hba1c_prediabetic_tax_table), rownames(hba1c_healthy_tax_table))
+hba1c_ASVs_pd <- as.data.frame(unique_ASVs_hba1c)
+
+#Filter and make table to analyze ASVs unique to healthy for hba1c
+unique_ASVs_hba1c_healthy <- setdiff(rownames(hba1c_healthy_tax_table), rownames(hba1c_prediabetic_tax_table))
+hba1c_ASVs_healthy <- as.data.frame(unique_ASVs_hba1c_healthy)
+
 
 # Subset dataset into prediabetic and healthy groups for fasting glucose
 prediabetic_glucose <- subset_samples(team4_RA, `fast_glucose_prediabetic`=="Yes")
@@ -95,13 +120,36 @@ healthy_ASVs <- core_members(healthy_glucose, detection=0, prevalence = 0.3)
 prediabetic_ASVs <- core_members(prediabetic_glucose, detection=0, prevalence = 0.3)
 
 #Make a list of the conditions we are interested in (Healthy and Prediabetic)
-status_list_full <- list(Healthy = healthy_ASVs, Prediabetic = prediabetic_ASVs)
+status_list_full <- list(H = healthy_ASVs, PD = prediabetic_ASVs)
+
+#Prune and make tables for ASVs
+fpg_taxtable <- tax_table(prune_taxa(prediabetic_ASVs,team4))
+fpg_prediabetic_tax_table <- as.data.frame(fpg_taxtable)
+
+fpg_h_taxtable <- tax_table(prune_taxa(healthy_ASVs,team4))
+fpg_healthy_tax_table <- as.data.frame(fpg_h_taxtable)
+
+#Filter and make table to analyze ASVs unique to prediabetic for fpg
+unique_ASVs_fpg <- setdiff(rownames(fpg_prediabetic_tax_table), rownames(fpg_healthy_tax_table))
+fpg_ASVs_pd <- as.data.frame(unique_ASVs_fpg)
+
+#Filter and make table to analyze ASVs unique to healthy for fpg
+unique_ASVs_fpg_healthy <- setdiff(rownames(fpg_healthy_tax_table), rownames(fpg_prediabetic_tax_table))
+fpg_ASVs_healthy <- as.data.frame(unique_ASVs_fpg_healthy)
+
 
 # Make a Venn-diagram
 venn_status <- ggVennDiagram(x = status_list_full)
+
+venn_status_colour <- venn_status + scale_fill_gradient(low = "#BCBDDC", high = "#54278F")
+
+
+# Example of using the generated palette in a barplot
+barplot(height = c(1, 2, 3, 4, 5, 6, 7), col = colors_blue, main = "Barplot with Brewer Palette")
+
 View(venn_status)
 # Saves the Venn diagram as a png 
-ggsave("venn_status_glucose.png", venn_status)
+ggsave("venn_status_glucose.png", venn_status_colour)
 
 # Subset dataset into prediabetic and healthy groups for both 
 prediabetic_both <- subset_samples(team4_RA, `hba1c_glucose_prediabetic`=="Yes")
