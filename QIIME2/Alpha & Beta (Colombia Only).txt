@@ -1,3 +1,5 @@
+## Alpha & Beta Code for QIIME 2 - COLOMBIA ONLY DATASET ## 
+
 #Transfer table.qzv to local computer 
 scp root@10.19.139.169:~/data/colombia/colombia_table-no-mitochondria-no-chloroplast.qzv .
 
@@ -57,3 +59,5 @@ qiime diversity beta-group-significance \
 
 #Transfer core-metrics to local computer 
 scp -r root@10.19.139.169:~/data/colombia/core-metrics-results .
+
+# By Loujain
