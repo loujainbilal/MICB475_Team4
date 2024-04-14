@@ -1,47 +1,78 @@
 ## Alpha & Beta Code for QIIME 2 - COLOMBIA ONLY DATASET REDO ## 
-#Upload new metadata file to the server called prediabetes_wrangled_metadata_REDO.tsv
 
-#Redo Alpha-Beta Analysis for HBA1C condition
-(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity core-metrics-phylogenetic \
-  --i-phylogeny /data/colombia/colombia_rooted-tree.qza \
+#Navigate to group server 
+(qiime2-2023.7) root@10.19.139.169:~/data/REDO
+
+#Convert table from qza to qzv using REDO metadata 
+qiime feature-table summarize \
   --i-table /data/colombia/colombia_table-no-mitochondria-no-chloroplast.qza \
+  --o-visualization table-no-mitochondria-no-chloroplast-REDO.qzv \
+  --m-sample-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+
+#Transfer table.qzv to local computer 
+scp root@10.19.139.169:~/data/REDO/table-no-mitochondria-no-chloroplast-REDO.qzv .
+
+#Rarefaction Curve#
+
+qiime diversity alpha-rarefaction \
+  --i-table ~/data/colombia/colombia_table.qza \
+  --i-phylogeny ~/data/colombia/colombia_rooted-tree.qza \
+  --p-max-depth 109000 \
+  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --o-visualization alpha-rarefaction-REDO.qzv
+
+#Transfer alpha-rarefaction.qzv to local computer 
+scp root@10.19.139.169:~/data/REDO/alpha-rarefaction-REDO.qzv .
+
+#Using rooted-tree.qza, filtered table.qza generated from Aim 2 and chosen sampling depth, run QIIME 2 alpha and beta diversity #core metrics command
+
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny /data/colombia/colombia_rooted-tree.qza \
+  --i-table  /data/colombia/colombia_table-no-mitochondria-no-chloroplast.qza \
   --p-sampling-depth 26493 \
   --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
   --output-dir core-metrics-results-REDO
-Saved FeatureTable[Frequency] to: core-metrics-results-REDO/rarefied_table.qza
-Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/faith_pd_vector.qza
-Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/observed_features_vector.qza
-Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/shannon_vector.qza
-Saved SampleData[AlphaDiversity] to: core-metrics-results-REDO/evenness_vector.qza
-Saved DistanceMatrix to: core-metrics-results-REDO/unweighted_unifrac_distance_matrix.qza
-Saved DistanceMatrix to: core-metrics-results-REDO/weighted_unifrac_distance_matrix.qza
-Saved DistanceMatrix to: core-metrics-results-REDO/jaccard_distance_matrix.qza
-Saved DistanceMatrix to: core-metrics-results-REDO/bray_curtis_distance_matrix.qza
-Saved PCoAResults to: core-metrics-results-REDO/unweighted_unifrac_pcoa_results.qza
-Saved PCoAResults to: core-metrics-results-REDO/weighted_unifrac_pcoa_results.qza
-Saved PCoAResults to: core-metrics-results-REDO/jaccard_pcoa_results.qza
-Saved PCoAResults to: core-metrics-results-REDO/bray_curtis_pcoa_results.qza
-Saved Visualization to: core-metrics-results-REDO/unweighted_unifrac_emperor.qzv
-Saved Visualization to: core-metrics-results-REDO/weighted_unifrac_emperor.qzv
-Saved Visualization to: core-metrics-results-REDO/jaccard_emperor.qzv
-Saved Visualization to: core-metrics-results-REDO/bray_curtis_emperor.qzv
-(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity alpha-group-significance \
+
+
+#Converting to qzv
+# Calculate alpha-group-significance
+qiime diversity alpha-group-significance \
   --i-alpha-diversity core-metrics-results-REDO/faith_pd_vector.qza \
-  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --m-metadata-file  prediabetes_wrangled_metadata_REDO.tsv \
   --o-visualization core-metrics-results-REDO/faith-pd-group-significance-REDO.qzv
-Saved Visualization to: core-metrics-results-REDO/faith-pd-group-significance-REDO.qzv
-(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity alpha-group-significance \
+
+qiime diversity alpha-group-significance \
   --i-alpha-diversity core-metrics-results-REDO/evenness_vector.qza \
   --m-metadata-file  prediabetes_wrangled_metadata_REDO.tsv \
   --o-visualization core-metrics-results-REDO/evenness-group-significance-REDO.qzv
-Saved Visualization to: core-metrics-results-REDO/evenness-group-significance-REDO.qzv
-(qiime2-2023.7) root@c9c770334885:~/data/REDO# qiime diversity beta-group-significance \
+  
+# Calculate beta-group-significance
+
+#hba1c
+qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results-REDO/unweighted_unifrac_distance_matrix.qza \
-  --m-metadata-file prediabetes_wrangled_metadata_REDO.tsv \
+  --m-metadata-file  prediabetes_wrangled_metadata_REDO.tsv \
   --m-metadata-column hba1c_prediabetic \
-  --o-visualization core-metrics-results-REDO/unweighted-unifrac-prediabetic-significance-REDO.qzv \
+  --o-visualization core-metrics-results-REDO/unweighted-unifrac-hba1c-significance-REDO.qzv \
   --p-pairwise
-Saved Visualization to: core-metrics-results-REDO/unweighted-unifrac-prediabetic-significance-REDO.qzv
+
+#fasting glucose
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results-REDO/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  prediabetes_wrangled_metadata_REDO.tsv \
+  --m-metadata-column fast_glucose_prediabetic \
+  --o-visualization core-metrics-results-REDO/unweighted-unifrac-glucose-significance_REDO.qzv \
+  --p-pairwise
 
 
-#BY AIDEN 
+#Transfer core-metrics to local computer 
+scp -r root@10.19.139.169:~/data/REDO/core-metrics-results-REDO .
+
+
+## MODULE 13: USING R.STUDIO TO RECREATE ALPHA AND BETA PLOTS ##
+
+#Transfer export file to local computer
+ scp -r root@10.19.139.169:~/data/export_2.0 .
+ scp -r root@10.19.139.169:~/data/REDO/prediabetes_wrangled_metadata_REDO.tsv .  
+
+#MOVE TO R.STUDIO
