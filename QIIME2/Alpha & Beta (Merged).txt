@@ -68,5 +68,7 @@ qiime diversity beta-group-significance \
   --p-pairwise
 
 
-Transfer core-metrics to local computer 
+#Transfer core-metrics to local computer 
 scp -r root@10.19.139.169:~/data/colombia_texas_merged/core-metrics-results .
+
+# By Loujain
