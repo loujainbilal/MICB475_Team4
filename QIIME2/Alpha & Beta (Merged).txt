@@ -1,3 +1,5 @@
+## Alpha & Beta Code for QIIME 2 - MERGED DATASETS ## 
+
 #Move metadata file with updated column name to team server 
 scp team4_metadata_2.0.tsv root@10.19.139.169:/data/metadata_files
 
