@@ -358,3 +358,5 @@ qiime diversity alpha-rarefaction \
 
   # Navigate to "colombia" directory on local computer and copy colombia_alpha-rarefaction.qzv
 scp root@<IP>:/data/colombia/colombia_alpha-rarefaction.qzv . 
+
+# By Parvin
