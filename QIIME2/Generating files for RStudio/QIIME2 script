@@ -1,0 +1,127 @@
+(qiime2-2023.7) root@c9c770334885:~# cd data
+(qiime2-2023.7) root@c9c770334885:~/data# ls
+colombia  colombia_texas_merged  metadata_files  proj2_team4  texas
+
+(qiime2-2023.7) root@c9c770334885:~/data# cd colombia_texas_merged
+
+(qiime2-2023.7) root@c9c770334885:~/data/colombia_texas_merged# ls
+alpha-rarefaction.qzv		    merged_table-no-mitochondria-no-chloroplast.qza
+core-metrics-results		    merged_table.qza
+merged_aligned-rep-seqs.qza	    merged_taxonomy.qza
+merged_masked-aligned-rep-seqs.qza  merged_taxonomy.qzv
+merged_rep-seqs.qza		    merged_unrooted-tree.qza
+merged_rooted-tree.qza		    table-no-mitochondria-no-chloroplast.qzv
+
+(qiime2-2023.7) root@c9c770334885:~/data/colombia_texas_merged# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data# cd proj2_team4 
+-bash: cd: proj2_team4: Not a directory
+
+(qiime2-2023.7) root@c9c770334885:~/data# cd metadata_files
+(qiime2-2023.7) root@c9c770334885:~/data/metadata_files# ls
+mexico_metadata.tsv  team4_metadata.tsv  team4_metadata_2.0.tsv  texas_metadata.tsv
+(qiime2-2023.7) root@c9c770334885:~/data/metadata_files# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data# cd proj2_team4
+-bash: cd: proj2_team4: Not a directory
+(qiime2-2023.7) root@c9c770334885:~/data# colombia_texas_merged/
+-bash: colombia_texas_merged/: Is a directory
+(qiime2-2023.7) root@c9c770334885:~/data# colombia_texas_merged
+-bash: colombia_texas_merged: command not found
+(qiime2-2023.7) root@c9c770334885:~/data# cd colombia_texas_merged
+(qiime2-2023.7) root@c9c770334885:~/data/colombia_texas_merged# ls
+alpha-rarefaction.qzv
+core-metrics-results
+merged_aligned-rep-seqs.qza
+merged_masked-aligned-rep-seqs.qza
+merged_rep-seqs.qza
+merged_rooted-tree.qza
+merged_table-no-mitochondria-no-chloroplast.qza
+merged_table.qza
+merged_taxonomy.qza
+merged_taxonomy.qzv
+merged_unrooted-tree.qza
+table-no-mitochondria-no-chloroplast.qzv
+(qiime2-2023.7) root@c9c770334885:~/data/colombia_texas_merged# cd .. 
+
+(qiime2-2023.7) root@c9c770334885:~/data# mkdir <merged_export>
+-bash: syntax error near unexpected token `newline'
+(qiime2-2023.7) root@c9c770334885:~/data# mkdir merged_export
+(qiime2-2023.7) root@c9c770334885:~/data# ls
+colombia	       merged_export   proj2_team4
+colombia_texas_merged  metadata_files  texas
+(qiime2-2023.7) root@c9c770334885:~/data# cd merged_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# qiime tools export \
+  --input-path ../colombia_texas_merged/merged_table.qza \
+  --output-path table_export 
+Exported ../colombia_texas_merged/merged_table.qza as BIOMV210DirFmt to directory table_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+table_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd table_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# ls
+feature-table.biom
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# biom convert -i feature-table.biom --to-tsv -o feature-table.txt
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# ls
+feature-table.biom  feature-table.txt
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# qiime tools export \
+  --input-path ../colombia_texas_merged/merged_taxonomy.qza \
+  --output-path taxonomy_export 
+Exported ../colombia_texas_merged/merged_taxonomy.qza as TSVTaxonomyDirectoryFormat to directory taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# taxonomy_export/
+-bash: taxonomy_export/: Is a directory
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd taxonomy_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/taxonomy_export# ls
+taxonomy.tsv
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/taxonomy_export# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# qiime tools export \
+  --input-path ../colombia_texas_merged/merged_rooted-tree.qza \
+  --output-path rooted_tree_export 
+Exported ../colombia_texas_merged/merged_rooted-tree.qza as NewickDirectoryFormat to directory rooted_tree_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+rooted_tree_export  table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd rooted_tree_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/rooted_tree_export# ls
+tree.nwk
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/rooted_tree_export# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+rooted_tree_export  table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd rooted_tree_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/rooted_tree_export# ls
+tree.nwk
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/rooted_tree_export# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+rooted_tree_export  table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# table_export/
+-bash: table_export/: Is a directory
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# ls
+rooted_tree_export  table_export  taxonomy_export
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd table_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# ls
+feature-table.biom  feature-table.txt
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/table_export# cd ..
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export# cd taxonomy_export/
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/taxonomy_export# ls
+taxonomy.tsv
+(qiime2-2023.7) root@c9c770334885:~/data/merged_export/taxonomy_export#
+
+
+Mayas-MacBook-Air-379:475_maya mayaruehlen$ scp root@10.19.139.169:/data/merged_export/rooted_tree_export/tree.nwk .
+root@10.19.139.169's password: 
+tree.nwk                                      100%  969KB   8.1MB/s   00:00    
+Mayas-MacBook-Air-379:475_maya mayaruehlen$ scp root@10.19.139.169:/data/merged_export/table_export/feature-table.txt .
+root@10.19.139.169's password: 
+feature-table.txt                             100%   33MB 899.2KB/s   00:37    
+Mayas-MacBook-Air-379:475_maya mayaruehlen$ scp root@10.19.139.169:/data/merged_export/taxonomy_export/taxonomy.tsv
+usage: scp [-346ABCpqrTv] [-c cipher] [-F ssh_config] [-i identity_file]
+            [-J destination] [-l limit] [-o ssh_option] [-P port]
+            [-S program] source ... target
+Mayas-MacBook-Air-379:475_maya mayaruehlen$ scp root@10.19.139.169:/data/merged_export/taxonomy_export/taxonomy.tsv .
+root@10.19.139.169's password: 
+taxonomy.tsv                                  100% 2106KB   6.6MB/s   00:00    
+Mayas-MacBook-Air-379:475_maya mayaruehlen$ scp root@10.19.139.169:/data/metadata_files/team4_metadata_2.0.tsv .
+root@10.19.139.169's password: 
+team4_metadata_2.0.tsv                        100%   39KB   1.1MB/s   00:00    
+Mayas-MacBook-Air-379:475_maya mayaruehlen$
