@@ -1,5 +1,8 @@
-####OLD - See Final_Wrangled_Metadata.R for updated script####
-####Colombia wrangling####
+####################################################
+#### OLD Colombia Metadata Wrangling - March 109, 2024####
+####################################################
+####See Final_Wrangled_Metadata.R for updated script####
+####################################################
 
 #Export colombia metadata
 meta_colFP <- "colombia_metadata.tsv"
