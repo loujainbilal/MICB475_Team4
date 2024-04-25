@@ -1,0 +1,12 @@
+"","ASV","s.No","s.Yes","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"1","9285543106c9eb8b08f15a702915c584",0,1,2,0.187999299210246,0.035,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Harryflintia",NA
+"2","3bc6aa710b0c9e98348a4f00aa60e194",0,1,2,0.270704921977458,0.025,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Prevotellaceae_UCG-003",NA
+"3","a6bcc473c5dba13eb4e8f0e7097d7427",0,1,2,0.2948957877938,0.04,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Barnesiellaceae","g__Coprobacter","s__uncultured_organism"
+"4","ac36b246efe42d84cb92d6e888924603",0,1,2,0.330771494042497,0.005,"d__Bacteria","p__Actinobacteriota","c__Actinobacteria","o__Actinomycetales","f__Actinomycetaceae","g__F0332","s__uncultured_bacterium"
+"5","7215bba11d376781d042ef295d212d26",0,1,2,0.291514887990209,0.02,"d__Bacteria","p__Elusimicrobiota","c__Elusimicrobia","o__Elusimicrobiales","f__Elusimicrobiaceae","g__Elusimicrobium","s__uncultured_bacterium"
+"6","a6119bc8478a325b47a251e0b6754044",0,1,2,0.154985763549614,0.045,"d__Bacteria","p__Desulfobacterota","c__Desulfovibrionia","o__Desulfovibrionales","f__Desulfovibrionaceae","g__Mailhella","s__Desulfovibrio_sp."
+"7","7d92c4bb7b790a73f13a607a55edaf44",0,1,2,0.167541497811284,0.02,"d__Bacteria","p__Proteobacteria","c__Alphaproteobacteria","o__Acetobacterales","f__Acetobacteraceae","g__Roseomonas","s__Roseomonas_gilardii"
+"8","3875d3f8358a8144e6e7e906b18faf67",0,1,2,0.259077338941494,0.025,"d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Pseudomonadales","f__Moraxellaceae","g__Acinetobacter",NA
+"9","109206b85284804fe6483c701ae4f9bd",1,0,1,0.258442884897017,0.03,"d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Burkholderiales","f__Oxalobacteraceae","g__Oxalobacter",NA
+"10","a87240721de66a133868ceb8ea3f58fe",0,1,2,0.264002680284364,0.01,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Syntrophococcus",NA
+"11","98a32c9f6e6d17c259ced4056ed9f954",0,1,2,0.254626893144884,0.01,"d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Enterobacterales","f__Yersiniaceae",NA,NA

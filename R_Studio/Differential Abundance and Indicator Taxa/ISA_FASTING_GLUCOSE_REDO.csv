@@ -1,0 +1,10 @@
+"","ASV","s.No","s.Yes","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"1","cd88dbd5bf1d3319296959843529f93f",0,1,2,0.570632666167327,0.01,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__uncultured","s__uncultured_bacterium"
+"2","d189850ce7e06c0725bb8054c0eff0ad",0,1,2,0.218131179239449,0.045,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__M2PB4-65_termite_group","g__M2PB4-65_termite_group","s__uncultured_Bacteroidetes"
+"3","3f4c75bb595016affe43b281c8bb43d3",0,1,2,0.46690434565301,0.03,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Marinifilaceae","g__Sanguibacteroides","s__Gabonibacter_massiliensis"
+"4","c4200a22dcad5bd82d3e8955a5fd554c",0,1,2,0.296053563307928,0.025,"d__Bacteria","p__Proteobacteria","c__Alphaproteobacteria","o__Rhizobiales","f__Rhizobiaceae","g__Phyllobacterium",NA
+"5","37eea11dd6226d775d98b3b41b591325",0,1,2,0.592176544109291,0.01,"d__Bacteria","p__Synergistota","c__Synergistia","o__Synergistales","f__Synergistaceae","g__Cloacibacillus","s__Cloacibacillus_porcorum"
+"6","716a1c2b09ddde77e67d1d18382e0512",0,1,2,0.372207730741718,0.01,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Peptostreptococcales-Tissierellales","f__Peptostreptococcaceae","g__Paeniclostridium",NA
+"7","8b07bbefbcf8b6175ab86a91420efba4",0,1,2,0.295608160032869,0.045,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Stomatobaculum","s__uncultured_bacterium"
+"8","a9bfc699fd34f11c12ce83c74a8dab6a",0,1,2,0.323439529801092,0.02,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__[Bacteroides]_pectinophilus_group","s__uncultured_bacterium"
+"9","40b27a36db253d0fa68679611db8f0c5",0,1,2,0.341918254583229,0.045,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_UCG-007","s__uncultured_bacterium"
