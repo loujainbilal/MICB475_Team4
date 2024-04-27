@@ -1,4 +1,4 @@
-## Processing the “Colombia” and “Texas” datasets using QIIME 2 for downstream ##
+## Processing the “Colombia” and “Texas” datasets using QIIME 2 for downstream analysis ##
 
 # February 26, 2024
 #!/bin/bash
