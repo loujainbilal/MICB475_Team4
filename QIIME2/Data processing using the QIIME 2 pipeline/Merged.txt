@@ -156,7 +156,7 @@ qiime feature-classifier classify-sklearn \
   --i-reads colombia_rep-seqs.qza \
   --o-classification colombia_taxonomy.qza
 
-March 4, 2024
+#March 3, 2024
 
   # Extract your amplicon of interest from the reference database
 #replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
@@ -172,6 +172,8 @@ March 4, 2024
   --o-reads texas_ref-seqs-trimmed.qza
 
   #Realized that we can assign taxonomy without training a classifier therefore proceeded to use the full length classifier.
+
+#March 4, 2024
 
   # Taxonomic analysis
 
@@ -275,8 +277,6 @@ qiime feature-classifier classify-sklearn \
 scp root@10.19.139.169:/data/colombia_texas_merged/merged_taxa-bar-plots2.0.qzv .
 
 #We noticed the taxonomy was only assigned to the Texas dataset to the domain level. Therefore, we sought to merge the taxonomy files we generated for each dataset. 
-
-# March 16, 2024
 
   #Merging two taxononomy files to create a merged-taxonomy.qza file
   qiime feature-table merge-taxa-data \
