@@ -1,1 +1,8 @@
+## Processing the “Colombia” and “Texas” datasets using QIIME 2 for downstream ##
 
+#!/bin/bash
+
+
+
+
+# By Parvin
