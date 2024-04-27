@@ -275,8 +275,8 @@ qiime feature-classifier classify-sklearn \
 scp root@10.19.139.169:/data/colombia_texas_merged/merged_taxa-bar-plots2.0.qzv .
 
 #We noticed the taxonomy was only assigned to the Texas dataset to the domain level. Therefore, we sought to merge the taxonomy files we generated for each dataset. 
-  _________________________________________________
-  March 16, 2024
+
+# March 16, 2024
 
   #Merging two taxononomy files to create a merged-taxonomy.qza file
   qiime feature-table merge-taxa-data \
@@ -284,13 +284,13 @@ scp root@10.19.139.169:/data/colombia_texas_merged/merged_taxa-bar-plots2.0.qzv 
   --i-data2 /data/texas/texas_taxonomy.qza \
   --o-merged-data merged-taxonomy3.0.qza
 
-  error: Error: QIIME 2 plugin 'feature-table' has no action 'merge-taxa-data'.  Did you mean 'merge-taxa'?
+  #error: Error: QIIME 2 plugin 'feature-table' has no action 'merge-taxa-data'.  Did you mean 'merge-taxa'?
 
   qiime feature-table merge-taxa \
   --i-data1 /data/colombia/colombia_taxonomy.qza \
   --i-data2 /data/texas/texas_taxonomy.qza \
   --o-merged-data merged-taxonomy3.0.qza
 
-# The above code chunks led to errors. Combining the taxonomy files for the datasets were posing a challenge so we decided to work with the Colombia dataset after this point. Please refer to MICB475_Team4/QIIME2/Data processing using the QIIME 2 pipeline/Colombia Only.txt for code that was subsequently run.
+# The above code chunks led to errors. Combining the taxonomy files for the datasets were posing a challenge so we decided to work with only the Colombia dataset after this point. Please refer to MICB475_Team4/QIIME2/Data processing using the QIIME 2 pipeline/Colombia Only.txt for code that was subsequently run.
 
 # By Parvin
