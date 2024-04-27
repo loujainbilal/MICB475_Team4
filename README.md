@@ -30,8 +30,6 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
   
 
 
-## Lab Notebook
-
 
 ## Code
 - [QIIME2](https://github.com/loujainbilal/MICB475_Team4/tree/3a48cc34f9b4d08d0d790a1ecf5cb28e09baa759/QIIME2)
