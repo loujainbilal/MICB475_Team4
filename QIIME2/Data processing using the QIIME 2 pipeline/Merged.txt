@@ -1,6 +1,6 @@
 ## Processing the “Colombia” and “Texas” datasets using QIIME 2 for downstream ##
 
-February 26, 2024
+# February 26, 2024
 #!/bin/bash
 
 # Create a directory for your project and navigate to it. This is for the Colombia dataset.
@@ -128,13 +128,13 @@ qiime feature-table merge \
  --o-tree merged_unrooted-tree.qza \
  --o-rooted-tree merged_rooted-tree.qza
 
- _______________________________________________________________________
-February 27, 2024
+# February 27, 2024
 
 # Extract your amplicon of interest from the reference database
 #replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
 #replace primer sequences with your correct sequences
 #replace trunc-len with the one you defined in your denoising step
+# This is for the Colombia dataset
 
  qiime feature-classifier extract-reads \
   --i-sequences /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza \
@@ -156,14 +156,13 @@ qiime feature-classifier classify-sklearn \
   --i-reads colombia_rep-seqs.qza \
   --o-classification colombia_taxonomy.qza
 
-
-  ________________________________________________________________________
-  March 4, 2024
+March 4, 2024
 
   # Extract your amplicon of interest from the reference database
 #replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
 #replace primer sequences with your correct sequences
 #replace trunc-len with the one you defined in your denoising step
+# This is for the Texas dataset
 
  qiime feature-classifier extract-reads \
   --i-sequences /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza \
@@ -172,10 +171,7 @@ qiime feature-classifier classify-sklearn \
   --p-trunc-len 325 \
   --o-reads texas_ref-seqs-trimmed.qza
 
-  #realized we can assign taxonomy without training 
-
-  _____________________________________________________
-  March 4, 2024
+  #Realized that we can assign taxonomy without training a classifier therefore proceeded to use the full length classifier.
 
   # Taxonomic analysis
 
@@ -194,16 +190,22 @@ qiime feature-classifier classify-sklearn \
   --m-metadata-file /data/metadata_files/team4_metadata_2.0.tsv \
   --o-visualization merged_taxa-bar-plots.qzv
 
-# Copy merged_taxa-bar-plots.qzv to local directory in order to analyze using QIIME 2 view
+ # Make directory in home directory on local machine and navigate to this directory
+mkdir colombia_texas_merged
+cd colombia_texas_merged
+
+# Copy merged_taxonomy.qzv and merged_taxa-bar-plots.qzv to local directory in order to analyze using QIIME 2 view
+scp root@<IP>:/data/colombia_texas_merged/merged_taxonomy.qzv . 
 scp root@<IP>:/data/colombia_texas_merged/merged_taxa-bar-plots.qzv . 
 
-  qiime taxa filter-table \
+# Remove eukaryotic sequences from the merged table
+ qiime taxa filter-table \
   --i-table merged_table.qza \
   --i-taxonomy merged_taxonomy.qza \
   --p-exclude mitochondria,chloroplast \
   --o-filtered-table merged_table-no-mitochondria-no-chloroplast.qza
-____________________________________________________________________
-____________________________________________________________________
+
+# Because taxonomy was not assigned to the Texas dataset, we decided to see what the results would be if we individually ran the analysis for both datasets. We proceeded to generate taxa bar plots for the two datasets independently.
 
 # Train classifier with your new ref-seq file
 # Replace ref-taxonomy.qza with the representative taxonomy file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-tax.qza)
@@ -232,20 +234,9 @@ qiime feature-classifier classify-sklearn \
   --m-metadata-file /data/colombia_wrangled_metadata2.0.tsv \
   --o-visualization colombia_taxa-bar-plots.qzv
 
+# March 15, 2024
 
-
-#Generate a taxa bar plot for the Texas ataset
- qiime taxa filter-table \
-  --i-table texas_table.qza \
-  --i-taxonomy merged_taxonomy.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-table merged_table-no-mitochondria-no-chloroplast.qza
-
-
-____________________________________________________________
-March 15, 2024
-
-#Trouble shooting the merging steps
+#Trouble shooting the merging steps. The 16S rDNA sequencing was performed on the V4 hypervariable region for the “Colombia dataset” and for the “Texas dataset”, sequencing was performed on the V1 and V3 regions. Therefore, we decided to train a classifier that used a forward primer for the V1 region and reverse primer for the V4 region.
 
 # Extract your amplicon of interest from the reference database
 #replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
@@ -258,7 +249,8 @@ March 15, 2024
   --p-r-primer GGACTACHVGGGTWTCTAAT \
   --o-reads merged_ref-seqs-trimmed.qza
 
-March 16, 2024
+# March 16, 2024
+
  # Train classifier with your new ref-seq file
 # Replace ref-taxonomy.qza with the representative taxonomy file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-tax.qza)
 qiime feature-classifier fit-classifier-naive-bayes \
@@ -272,7 +264,6 @@ qiime feature-classifier classify-sklearn \
   --i-reads merged_rep-seqs.qza \
   --o-classification merged_taxonomy2.0.qza
 
-
 #Generate a taxa bar plot for the Colombia dataset
   qiime taxa barplot \
   --i-table merged_table.qza \
@@ -280,91 +271,26 @@ qiime feature-classifier classify-sklearn \
   --m-metadata-file /data/metadata_files/team4_metadata_2.0.tsv \
   --o-visualization merged_taxa-bar-plots2.0.qzv
 
-#Copy merged_taxonomy2.0.qza to local computer
+#Copy merged_taxa-bar-plots2.0.qzv to local computer
 scp root@10.19.139.169:/data/colombia_texas_merged/merged_taxa-bar-plots2.0.qzv .
+
+#We noticed the taxonomy was only assigned to the Texas dataset to the domain level. Therefore, we sought to merge the taxonomy files we generated for each dataset. 
   _________________________________________________
   March 16, 2024
 
   #Merging two taxononomy files to create a merged-taxonomy.qza file
   qiime feature-table merge-taxa-data \
-
   --i-data1 /data/colombia/colombia_taxonomy.qza \
-
   --i-data2 /data/texas/texas_taxonomy.qza \
-
   --o-merged-data merged-taxonomy3.0.qza
 
   error: Error: QIIME 2 plugin 'feature-table' has no action 'merge-taxa-data'.  Did you mean 'merge-taxa'?
 
   qiime feature-table merge-taxa \
-
   --i-data1 /data/colombia/colombia_taxonomy.qza \
-
   --i-data2 /data/texas/texas_taxonomy.qza \
-
   --o-merged-data merged-taxonomy3.0.qza
 
-_________________________________________
-March 21, 2024
-
-#Generating a new table.qza file using the updated metadata file (/prediabetes_wrangled_metadata.tsv.
-# Visualize ASVs stats
-qiime feature-table summarize \
-  --i-table colombia_table.qza \
-  --o-visualization colombia_table2.0.qzv \
-  --m-sample-metadata-file /data/metadata_files/prediabetes_wrangled_metadata.tsv
-
-  # Navigate to "colombia" directory on local computer and copy colombia_table2.0.qzv
-  scp root@<IP>:/data/colombia/colombia_table2.0.qzv . 
-
-#Converting taxonomy.qza file to taxonomy.qzv file
-  qiime metadata tabulate \
-  --m-input-file colombia_taxonomy.qza \
-  --o-visualization colombia_taxonomy.qzv
-
-# Taxonomy barplots
-    qiime taxa barplot \
-  --i-table colombia_table.qza \
-  --i-taxonomy colombia_taxonomy.qza \
-  --m-metadata-file /data/metadata_files/prediabetes_wrangled_metadata.tsv \
-  --o-visualization colombia_taxa-bar-plots2.0.qzv
-
-# Navigate to "colombia" directory on local computer and copy colombia_taxonomy.qzv and colombia_taxa-bar-plots2.0.qzv
-scp root@<IP>:/data/colombia/colombia_taxonomy.qzv . 
-scp root@<IP>:/data/colombia/colombia_taxa-bar-plots2.0.qzv . 
-
-#Taxonomy-based filtering
-qiime taxa filter-table \
-  --i-table colombia_table.qza \
-  --i-taxonomy colombia_taxonomy.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-table colombia_table-no-mitochondria-no-chloroplast.qza
-
-qiime feature-table summarize \
-  --i-table colombia_table-no-mitochondria-no-chloroplast.qza \
-  --o-visualization colombia_table-no-mitochondria-no-chloroplast.qzv \
-  --m-sample-metadata-file /data/metadata_files/prediabetes_wrangled_metadata.tsv
-
-# Navigate to "colombia" directory on local computer and copy colombia_taxonomy.qzv and colombia_taxa-bar-plots2.0.qzv
-scp root@<IP>:/data/colombia/colombia_table-no-mitochondria-no-chloroplast.qzv . 
-
-# Generate a tree for phylogenetic diversity analyses
-qiime phylogeny align-to-tree-mafft-fasttree \
-  --i-sequences colombia_rep-seqs.qza \
-  --o-alignment colombia_aligned-rep-seqs.qza \
-  --o-masked-alignment colombia_masked-aligned-rep-seqs.qza \
-  --o-tree colombia_unrooted-tree.qza \
-  --o-rooted-tree colombia_rooted-tree.qza 
-
-# Alpha-rarefaction
-qiime diversity alpha-rarefaction \
-  --i-table colombia_table-no-mitochondria-no-chloroplast.qza \
-  --i-phylogeny colombia_rooted-tree.qza \
-  --p-max-depth 109000 \
-  --m-metadata-file /data/metadata_files/prediabetes_wrangled_metadata.tsv \
-  --o-visualization colombia_alpha-rarefaction.qzv
-
-  # Navigate to "colombia" directory on local computer and copy colombia_alpha-rarefaction.qzv
-scp root@<IP>:/data/colombia/colombia_alpha-rarefaction.qzv . 
+# The above code chunks led to errors. Combining the taxonomy files for the datasets were posing a challenge so we decided to work with the Colombia dataset after this point. Please refer to MICB475_Team4/QIIME2/Data processing using the QIIME 2 pipeline/Colombia Only.txt for code that was subsequently run.
 
 # By Parvin
