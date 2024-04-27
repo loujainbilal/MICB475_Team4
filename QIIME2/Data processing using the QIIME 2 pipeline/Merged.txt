@@ -1,5 +1,6 @@
 ## Processing the “Colombia” and “Texas” datasets using QIIME 2 for downstream ##
 
+February 26, 2024
 #!/bin/bash
 
 # Create a directory for your project and navigate to it. This is for the Colombia dataset.
