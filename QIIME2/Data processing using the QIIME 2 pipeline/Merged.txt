@@ -2,7 +2,7 @@
 
 #!/bin/bash
 
-# Create a directory for your project and navigate to it
+# Create a directory for your project and navigate to it. This is for the Colombia dataset.
 mkdir /data/colombia
 cd /data/colombia
  
@@ -18,7 +18,7 @@ qiime demux summarize \
   --i-data colombia_demux_seqs.qza \
   --o-visualization colombia_demux_seqs.qzv
 
-# Make directory in home directory on local machine and naviagte to this directory
+# Make directory in home directory on local machine and navigate to this directory
 mkdir colombia
 cd colombia
 
@@ -41,12 +41,16 @@ qiime feature-table summarize \
   --i-table colombia_table.qza \
   --o-visualization colombia_table.qzv \
   --m-sample-metadata-file /mnt/datasets/project_2/colombia/colombia_metadata.txt
-  
+
 qiime feature-table tabulate-seqs \
   --i-data colombia_rep-seqs.qza \
   --o-visualization colombia_rep-seqs.qzv
-  __________________________________________________________________
-# Create a directory for your project and navigate to it
+
+# Copy colombia_table.qzv and colombia_rep-seqs.qzv to local directory 
+scp root@<IP>:/data/colombia/colombia_table.qzv .
+scp root@<IP>:/data/colombia/colombia_rep-seqs.qzv . 
+
+# Create another directory for your project and navigate to it. This is for the Texas dataset.
 
 mkdir /data/texas
 cd /data/texas
@@ -90,8 +94,12 @@ qiime feature-table summarize \
 qiime feature-table tabulate-seqs \
   --i-data texas_rep-seqs.qza \
   --o-visualization texas_rep-seqs.qzv
-__________________________________________________________________________
-# Create a directory for your project and navigate to it
+
+# Copy texas_table.qzv and texas_rep-seqs.qzv to local directory 
+scp root@<IP>:/data/texas/texas_table.qzv .
+scp root@<IP>:/data/texas/texas_rep-seqs.qzv . 
+
+# Create another directory for your project and navigate to it. This directory will be used to merge the two datasets.
 
 mkdir /data/colombia_texas_merged
 cd /data/colombia_texas_merged
