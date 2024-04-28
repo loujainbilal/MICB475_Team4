@@ -77,4 +77,4 @@ scp -r root@10.19.139.169:~/data/REDO/core-metrics-results-REDO .
 
 #MOVE TO R.STUDIO
 
-#by Loujain
+#by Loujain B.
