@@ -1,0 +1,64 @@
+
+## Alpha & Beta Code for QIIME 2 - COLOMBIA ONLY DATASET ## 
+
+#Transfer table.qzv to local computer 
+scp root@10.19.139.169:~/data/colombia/colombia_table-no-mitochondria-no-chloroplast.qzv .
+
+
+#Transfer alpha-rarefaction.qzv to local computer 
+scp root@10.19.139.169:~/data/colombia/colombia_alpha-rarefaction.qzv .
+
+
+
+#Using rooted-tree.qza, filtered table.qza generated from Aim 2 and chosen sampling depth, run #QIIME 2 alpha and beta diversity core metrics command
+
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny colombia_rooted-tree.qza \
+  --i-table colombia_table-no-mitochondria-no-chloroplast.qza \
+  --p-sampling-depth 26493 \
+  --m-metadata-file ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --output-dir core-metrics-results
+
+
+#Converting to qzv
+# Calculate alpha-group-significance
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
+  --m-metadata-file  ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file  ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+  
+# Calculate beta-group-significance
+
+#hba1c
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --m-metadata-column hba1c_prediabetic \
+  --o-visualization core-metrics-results/unweighted-unifrac-hba1c-significance.qzv \
+  --p-pairwise
+
+#fasting glucose
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --m-metadata-column fast_glucose_prediabetic \
+  --o-visualization core-metrics-results/unweighted-unifrac-glucose-significance.qzv \
+  --p-pairwise
+
+#both hba1c and fasting glucose 
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  ~/data/metadata_files/prediabetes_wrangled_metadata.tsv \
+  --m-metadata-column hba1c_glucose_prediabetic \
+  --o-visualization core-metrics-results/unweighted-unifrac-hba1c-glucose-significance.qzv \
+  --p-pairwise
+
+#Transfer core-metrics to local computer 
+scp -r root@10.19.139.169:~/data/colombia/core-metrics-results .
+
+# By Loujain
