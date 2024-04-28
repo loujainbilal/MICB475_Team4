@@ -1,8 +1,7 @@
 # MICB 475 Team 4
 
 ## Project Summary
-Our project uses HbA1C and fasting glucose levels in Latin populations from Colombia and the United States to explore the differences in microbiome composition as an indicator of pre-diabetes. Data sets include the provided Colombia data and a new data set from a study on a Hispanic cohort from Cameron County, Texas USA.  
-
+Our project uses the 16S rRNA from a Colombia cohort to investigate the microbial composition between patients with prediabetes and type II diabetes classified using two different diagnostic tools, HbA1C and fasting plasma glucose (FPG). 
 
 ## Project Aims
 - Aim 1: Metadata Wrangling
@@ -10,12 +9,11 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
 - Aim 3: Basic Alpha and Beta Diversity Analysis
 - Aim 4: Indicator Taxa Analysis
 - Aim 5: Core Microbiome Analysis
-- Aim 6: Differential Abundance 
+- Aim 6: Differential Abundance
+- Aim 7: PICRUSt2 analysis
+
 
 ## Datasets
-- Path to America data set: /mnt/datasets/project_2/diabetes/mexico_metadata.tsv
-  - n = 63
-  - [Link to paper 6](https://link.springer.com/article/10.1186/s40168-015-0072-y#MOESM1) 
 - Path to Colombia data set: /mnt/datasets/project_2/colombia/colombia_metadata.txt
 
 ## Meeting Agenda and Minutes
@@ -32,6 +30,6 @@ Our project uses HbA1C and fasting glucose levels in Latin populations from Colo
 
 
 ## Code
-- [QIIME2](https://github.com/loujainbilal/MICB475_Team4/tree/3a48cc34f9b4d08d0d790a1ecf5cb28e09baa759/QIIME2)
+- [QIIME 2](https://github.com/loujainbilal/MICB475_Team4/tree/3a48cc34f9b4d08d0d790a1ecf5cb28e09baa759/QIIME2)
 - [R Studio](https://github.com/loujainbilal/MICB475_Team4/tree/c2bef3bce4d6de0b681bbc162ffbdc0419a8a7ec/R_Studio)
 
