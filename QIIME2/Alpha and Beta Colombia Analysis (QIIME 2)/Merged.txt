@@ -1,1 +1,74 @@
+## Alpha & Beta Code for QIIME 2 - MERGED DATASETS ## 
 
+#Move metadata file with updated column name to team server 
+scp team4_metadata_2.0.tsv root@10.19.139.169:/data/metadata_files
+
+#Convert table from qza to qzv 
+qiime feature-table summarize \
+  --i-table merged_table-no-mitochondria-no-chloroplast.qza \
+  --o-visualization table-no-mitochondria-no-chloroplast.qzv \
+  --m-sample-metadata-file ~/data/metadata_files/team4_metadata_2.0.tsv \
+
+#Transfer table.qzv to local computer 
+scp root@10.19.139.169:~/data/colombia_texas_merged/table-no-mitochondria-no-chloroplast.qzv .
+
+#Rarefaction Curve
+qiime diversity alpha-rarefaction \
+  --i-table merged_table.qza \
+  --i-phylogeny merged_rooted-tree.qza \
+  --p-max-depth 109000 \
+  --m-metadata-file ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --o-visualization alpha-rarefaction.qzv
+
+
+#Transfer alpha-rarefaction.qzv to local computer 
+scp root@10.19.139.169:~/data/colombia_texas_merged/alpha-rarefaction.qzv .
+
+
+
+#Navigate to group server 
+(qiime2-2023.7) root@10.19.139.169:~/data/colombia_texas_merged
+
+
+#Using rooted-tree.qza, filtered table.qza generated from Aim 2 and chosen sampling depth, run QIIME 2 alpha and beta #diversity core metrics command
+
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny merged_rooted-tree.qza \
+  --i-table merged_table-no-mitochondria-no-chloroplast.qza \
+  --p-sampling-depth 13890 \
+  --m-metadata-file ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --output-dir core-metrics-results
+
+
+# Converting to qzv
+# Calculate alpha-group-significance
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
+  --m-metadata-file  ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file  ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+  
+# Calculate beta-group-significance
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --m-metadata-column prediabetic \
+  --o-visualization core-metrics-results/unweighted-unifrac-prediabetic-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file  ~/data/metadata_files/team4_metadata_2.0.tsv \
+  --m-metadata-column prediabetic_and_dataset \
+  --o-visualization core-metrics-results/unweighted-unifrac-prediabetic-and-dataset-significance.qzv \
+  --p-pairwise
+
+
+#Transfer core-metrics to local computer 
+scp -r root@10.19.139.169:~/data/colombia_texas_merged/core-metrics-results .
+
+# By Loujain
