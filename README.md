@@ -31,5 +31,5 @@ Our project uses the 16S rRNA from a Colombia cohort to investigate the microbia
 
 ## Code
 - [QIIME 2](https://github.com/loujainbilal/MICB475_Team4/tree/11620a032e2ca20df46ad366ef786863d2468928/QIIME2)
-- [R Studio](https://github.com/loujainbilal/MICB475_Team4/tree/c2bef3bce4d6de0b681bbc162ffbdc0419a8a7ec/R_Studio)
+- [R Studio](https://github.com/loujainbilal/MICB475_Team4/tree/97e228c1e32665465145cd808b859679190f3e47/R_Studio)
 
